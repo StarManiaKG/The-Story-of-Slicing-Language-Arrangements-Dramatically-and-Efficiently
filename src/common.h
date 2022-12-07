@@ -94,6 +94,8 @@
 #include <wx/xrc/xmlres.h>
 #include <wx/zipstrm.h>
 
+// NOTE: If you don't want any of these definitions added, just comment them out, by the way.
+
 #ifndef USE_WEBVIEW_STARTPAGE
 #include <wx/html/htmlwin.h>
 #endif
@@ -127,6 +129,8 @@
 #ifndef _WIN32
 #undef _WINDOWS_
 #endif
+
+#define SRB2_FRIENDLY //adds better support for the fellow srb2 users out there
 
 // fmt
 #include "thirdparty/fmt/include/fmt/core.h"

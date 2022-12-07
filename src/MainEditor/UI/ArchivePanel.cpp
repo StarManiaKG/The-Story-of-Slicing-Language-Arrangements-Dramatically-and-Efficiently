@@ -3181,6 +3181,7 @@ bool ArchivePanel::handleAction(string_view id)
 		archiveoperations::removeUnusedZDoomTextures(archive.get());
 
 	// Archive->Maintenance->Check Duplicate Entry Names
+#ifndef SRB2_FRIENDLY
 	else if (id == "arch_check_duplicates")
 		archiveoperations::checkDuplicateEntryNames(archive.get());
 
@@ -3197,6 +3198,7 @@ bool ArchivePanel::handleAction(string_view id)
 	// Archive->Maintenance->Check Duplicate Entry Names
 	else if (id == "arch_clean_iwaddupes")
 		archiveoperations::removeEntriesUnchangedFromIWAD(archive.get());
+#endif
 
 	// Archive->Maintenance->Replace in Maps
 	else if (id == "arch_replace_maps")
@@ -3442,10 +3444,12 @@ wxMenu* ArchivePanel::createMaintenanceMenu()
 	SAction::fromId("arch_clean_flats")->addToMenu(menu_clean);
 	SAction::fromId("arch_clean_zdoom_textures")->addToMenu(menu_clean);
 	SAction::fromId("arch_clean_iwaddupes")->addToMenu(menu_clean);
+#ifndef SRB2_FRIENDLY
 	SAction::fromId("arch_check_duplicates")->addToMenu(menu_clean);
 	SAction::fromId("arch_check_duplicates2")->addToMenu(menu_clean);
 	SAction::fromId("arch_check_zdoom_texture_duplicates")->addToMenu(menu_clean);
 	SAction::fromId("arch_check_zdoom_patch_duplicates")->addToMenu(menu_clean);
+#endif
 	SAction::fromId("arch_replace_maps")->addToMenu(menu_clean);
 	return menu_clean;
 }

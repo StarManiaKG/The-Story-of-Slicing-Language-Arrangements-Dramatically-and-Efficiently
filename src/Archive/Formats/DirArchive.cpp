@@ -78,7 +78,11 @@ DirArchive::DirArchive() : Archive("folder"), ignore_hidden_{ archive_dir_ignore
 	separator_ = '/';
 #endif
 
+#ifndef SRB2FRIENDLY
 	rootDir()->allowDuplicateNames(false);
+#else
+	rootDir()->allowDuplicateNames(true);
+#endif
 }
 
 // -----------------------------------------------------------------------------
