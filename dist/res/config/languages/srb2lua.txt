@@ -125,6 +125,12 @@ srb2lua {
 		ONCEILINGZ,
 		INFLIVES,
 
+		DASHMODE_THRESHOLD,
+		DASHMODE_MAX,
+
+		FIRSTSUPERCOLOR,
+		NUMSUPERCOLORS,
+
 		// translucency levels
 		TR_TRANS10,
 		TR_TRANS20,
@@ -233,6 +239,7 @@ srb2lua {
 		CA_JUMPTHOK,
 		CA_BOUNCE,
 		CA_TWINSPIN,
+
 		CA2_NONE,
 		CA2_SPINDASH,
 		CA2_GUNSLINGER,
@@ -286,6 +293,7 @@ srb2lua {
 		PF_JUMPED,
 		PF_NOJUMPDAMAGE,
 		PF_STARTDASH,
+		PF_SPINNING,
 		PF_THOKKED,
 		PF_SHIELDABILITY,
 		PF_GLIDING,
@@ -365,6 +373,7 @@ srb2lua {
 		BT_WEAPONPREV,
 		BT_ATTACK,
 		BT_USE,
+		BT_SPIN,
 		BT_CAMLEFT,
 		BT_CAMRIGHT,
 		BT_TOSSFLAG,
@@ -662,6 +671,8 @@ srb2lua {
 		P_TryMove = "mobj_t mobj, fixed x, fixed y, [boolean allowdrowoff?]";
 		P_Move = "mobj_t actor, int speed";
 		P_TeleportMove = "mobj_t mobj, fixed x, fixed y, fixed z";
+		P_SetOrigin = "mobj_t mobj, fixed x, fixed y, fixed z";
+		P_MoveOrigin = "mobj_t mobj, fixed x, fixed y, fixed z";
 		P_SlideMove = "mobj_t mo";
 		P_BounceMove = "mobj_t mo";
 		P_CheckSight = "mobj_t source, mobj_t target";
@@ -731,7 +742,7 @@ srb2lua {
 		S_SpeedMusic = "fixed musicspeed, [player_t player]";
 		S_StopMusic = "[player_t player]";
 		S_SetInternalMusicVolume = "int volume, [player_t player]";
-		S_StopFadingMusic = "[player_t player]";
+		S_StopFadingMusic = "int ms, [player_t player]";
 		S_FadeMusic = "int target_volume, int ms, [player_t player]";
 		S_FadeOutStopMusic = "int ms, [player_t player]";
 		S_OriginPlaying = "mobj_t origin";

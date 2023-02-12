@@ -24,6 +24,8 @@
 * `-DNO_WEBVIEW=ON`: use if your wxWidgets build has no wxWebview or if not desired
 * `-DWX_GTK3=OFF`: use if your wxWidgets build is using the wxGTK2 backend (there is no autodetection at this point)
 
+* `-DUSE_SFML_RENDERWINDOW`: Recommended, and Enabled by Default on Linux, Disabled on Windows. Uses SFML to Render SLADE's windows.
+
 ## Windows
 
 SLADE can be built on Windows using [Visual Studio](https://visualstudio.microsoft.com/) 2019+ (a free 'community' edition is available which works fine) and [vcpkg](https://docs.microsoft.com/en-us/cpp/build/vcpkg?view=vs-2019) for handling the required external libraries.
