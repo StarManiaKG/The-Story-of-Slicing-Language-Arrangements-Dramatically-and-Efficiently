@@ -34,6 +34,11 @@ All supported graphic formats can be converted to PNG/DoomGfx/DoomFlat and more,
 **Texture editing**  
 Edit Doom composite textures (TEXTUREx) with the easy-to-use SLADE3 texture editor. Also fully supports ZDoom's enhanced composite texture format (TEXTURES).
 
+### Compiling
+See the COMPILE.md file for details on how to Compile SLADE.
+
+One feature to keep note of includes the `-DUSE_SFML_RENDERWINDOW` flag, which controls whether or not SLADE uses SFML or wxWidgets to render its windows. If you're planning on using Wayland with SLADE, it's best to turn this flag off, as SFML can't render Wayland windows.
+
 ### Supporting SLADE
 
 If you wish to help support SLADE development, feel free to make a small [donation](https://www.paypal.me/sirjuddington), though by no means is this a requirement for continued development. I work on SLADE in my free time as a hobby project and generally enjoy it, which is enough for me.
