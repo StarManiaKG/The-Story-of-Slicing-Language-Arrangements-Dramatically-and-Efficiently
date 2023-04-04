@@ -23,8 +23,7 @@
 * `-DNO_COTIRE=ON`: disable the use of precompiled headers
 * `-DNO_WEBVIEW=ON`: use if your wxWidgets build has no wxWebview or if not desired
 * `-DWX_GTK3=OFF`: use if your wxWidgets build is using the wxGTK2 backend (there is no autodetection at this point)
-
-* `-DUSE_SFML_RENDERWINDOW`: Recommended, and Enabled by Default on Linux, Disabled on Windows. Uses SFML to Render SLADE's windows.
+* `-DUSE_SFML_RENDERWINDOW`: Uses SFML to Render SLADE's windows, instead of wxWidgets.
 
 ## Windows
 

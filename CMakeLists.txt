@@ -25,11 +25,6 @@ if(NOT APPLE)
 	OPTION(WX_GTK3 "Use GTK3 (if wx is built with it)" ON)
 endif(NOT APPLE)
 
-# USE_SFML_RENDERWINDOW is enabled by Default on Linux
-if (LINUX)
-	set(USE_SFML_RENDERWINDOW ON)
-endif()
-
 # c++17 is required to compile
 if(CMAKE_VERSION VERSION_LESS 3.1)
 	add_compile_options(-std=c++17)

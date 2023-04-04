@@ -261,6 +261,7 @@ bool ZipArchive::write(string_view filename, bool update)
 	// Check for entries with duplicate names (not allowed for zips)
 	auto all_dirs = rootDir()->allDirectories();
 	all_dirs.insert(all_dirs.begin(), rootDir());
+	
 #ifndef SRB2_FRIENDLY
 	for (const auto& dir : all_dirs)
 	{
