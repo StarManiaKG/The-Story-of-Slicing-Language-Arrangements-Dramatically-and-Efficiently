@@ -67,12 +67,12 @@ BEGIN
     BEGIN
         BLOCK "0c0904b0"
         BEGIN
-            VALUE "FileDescription", "SLADE"
+            VALUE "FileDescription", "TSoSLADaE"
             VALUE "FileVersion", "3.2.2"
             VALUE "InternalName", "SLADE.exe"
             VALUE "LegalCopyright", "Copyright (C) 2023"
             VALUE "OriginalFilename", "SLADE.exe"
-            VALUE "ProductName", "SLADE"
+            VALUE "ProductName", "TSoSLADaE"
             VALUE "ProductVersion", "3.2.2"
         END
     END

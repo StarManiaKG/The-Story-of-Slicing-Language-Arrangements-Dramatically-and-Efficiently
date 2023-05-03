@@ -1,10 +1,15 @@
 
 // -----------------------------------------------------------------------------
-// SLADE - It's a Doom Editor
-// Copyright(C) 2008 - 2022 Simon Judd
+// TSoSLADaE - It's a Fork of a Doom Editor!
+// Copyright(C) 2008 - 2023 Simon Judd
+// Copyright(C) 2022 - 2023 Simon Judd
 //
 // Email:       sirjuddington@gmail.com
 // Web:         http://slade.mancubus.net
+//
+// TSoSLADaE Email:			  none
+// TSoSLADaE Web:			  https://github.com/StarManiaKG/The-Story-of-Slicing-Language-Arrangements-Dramatically-and-Efficiently
+//
 // Filename:    ArchiveEntry.cpp
 // Description: ArchiveEntry, a class that represents and holds information
 //              about a single 'entry', ie, a chunk of data with a name and

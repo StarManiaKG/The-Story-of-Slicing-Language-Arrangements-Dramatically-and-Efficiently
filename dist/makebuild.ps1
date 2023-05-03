@@ -17,11 +17,11 @@ if ($userev.ToLower() -eq "y")
 	$version = "${version}_$rev_short"
 }
 
-# Prompt to build SLADE
-Write-Host "`nRebuild SLADE? (y/n) " -foregroundcolor cyan -nonewline
+# Prompt to build TSoSLADaE
+Write-Host "`nRebuild TSoSLADaE? (y/n) " -foregroundcolor cyan -nonewline
 $buildbinaries = Read-Host
 
-# Build SLADE
+# Build TSoSLADaE
 if ($buildbinaries.ToLower() -eq "y")
 {
 	# Find devenv path (community or professional)
@@ -84,7 +84,7 @@ Write-Host "`nBuilding slade.pk3..." -foregroundcolor yellow
 Write-Host "Done" -foregroundcolor green
 
 # Copy Files
-Write-Host "`nCopying SLADE files..." -foregroundcolor yellow
+Write-Host "`nCopying TSoSLADaE files..." -foregroundcolor yellow
 # Common
 Copy-Item (resolve-path ".\slade.pk3") "$releasedir" -Force
 # Win32

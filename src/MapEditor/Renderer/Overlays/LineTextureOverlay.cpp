@@ -1,10 +1,15 @@
 
 // -----------------------------------------------------------------------------
-// SLADE - It's a Doom Editor
-// Copyright(C) 2008 - 2022 Simon Judd
+// TSoSLADaE - It's a Fork of a Doom Editor!
+// Copyright(C) 2008 - 2023 Simon Judd
+// Copyright(C) 2022 - 2023 Simon Judd
 //
 // Email:       sirjuddington@gmail.com
 // Web:         http://slade.mancubus.net
+//
+// TSoSLADaE Email:			  none
+// TSoSLADaE Web:			  https://github.com/StarManiaKG/The-Story-of-Slicing-Language-Arrangements-Dramatically-and-Efficiently
+//
 // Filename:    LineTextureOverlay.cpp
 // Description: LineTextureOverlay class - A full screen map editor overlay that
 //              shows (a) lines textures and allows the user to click a texture

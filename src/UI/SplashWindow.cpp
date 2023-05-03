@@ -1,10 +1,15 @@
 
 // -----------------------------------------------------------------------------
-// SLADE - It's a Doom Editor
-// Copyright(C) 2008 - 2022 Simon Judd
+// TSoSLADaE - It's a Fork of a Doom Editor!
+// Copyright(C) 2008 - 2023 Simon Judd
+// Copyright(C) 2022 - 2023 Simon Judd
 //
 // Email:       sirjuddington@gmail.com
 // Web:         http://slade.mancubus.net
+//
+// TSoSLADaE Email:			  none
+// TSoSLADaE Web:			  https://github.com/StarManiaKG/The-Story-of-Slicing-Language-Arrangements-Dramatically-and-Efficiently
+//
 // Filename:    SplashWindow.cpp
 // Description: The SLADE splash window. Shows the SLADE logo, a message, and
 //              an optional progress bar (with its own message)

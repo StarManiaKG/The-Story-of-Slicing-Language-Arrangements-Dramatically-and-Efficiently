@@ -1,10 +1,15 @@
 
 // -----------------------------------------------------------------------------
-// SLADE - It's a Doom Editor
-// Copyright(C) 2008 - 2022 Simon Judd
+// TSoSLADaE - It's a Fork of a Doom Editor!
+// Copyright(C) 2008 - 2023 Simon Judd
+// Copyright(C) 2022 - 2023 Simon Judd
 //
 // Email:       sirjuddington@gmail.com
 // Web:         http://slade.mancubus.net
+//
+// TSoSLADaE Email:			  none
+// TSoSLADaE Web:			  https://github.com/StarManiaKG/The-Story-of-Slicing-Language-Arrangements-Dramatically-and-Efficiently
+//
 // Filename:    TextStyle.cpp
 // Description: Classes which handle font and colour settings for the text
 //              editor. TextStyle contains the actual font and colour settings
@@ -778,7 +783,8 @@ bool StyleSet::loadResourceStyles()
 	}
 
 	// Read default style set first
-	auto default_style = dir->entry("default.sss");
+	// STAR NOTE: Vanilla SLADE's default style was default.sss! If you want that back, type that in down there.
+	auto default_style = dir->entry("TSoSLADaE_StarManiaKG.sss");
 	if (default_style)
 	{
 		// Read entry data into tokenizer

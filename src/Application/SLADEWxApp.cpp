@@ -1,10 +1,15 @@
 
 // -----------------------------------------------------------------------------
-// SLADE - It's a Doom Editor
-// Copyright(C) 2008 - 2022 Simon Judd
+// TSoSLADaE - It's a Fork of a Doom Editor!
+// Copyright(C) 2008 - 2023 Simon Judd
+// Copyright(C) 2022 - 2023 Simon Judd
 //
 // Email:       sirjuddington@gmail.com
 // Web:         http://slade.mancubus.net
+//
+// TSoSLADaE Email:			  none
+// TSoSLADaE Web:			  https://github.com/StarManiaKG/The-Story-of-Slicing-Language-Arrangements-Dramatically-and-Efficiently
+//
 // Filename:    SLADEWxApp.cpp
 // Description: SLADEWxApp class functions.
 //
@@ -48,6 +53,10 @@
 #ifdef UPDATEREVISION
 #include "gitinfo.h"
 #endif
+
+// STAR STUFF //
+#include <filesystem>
+// TIME TO MESS UP SLADE TOO //
 
 using namespace slade;
 
@@ -193,7 +202,7 @@ public:
 
 		// Add general crash message
 		string message =
-			"SLADE has crashed unexpectedly. To help fix the problem that caused this crash, "
+			"TSoSLADaE has crashed unexpectedly. To help fix the problem that caused this crash, "
 			"please click 'Create GitHub Issue' below and copy+paste the stack trace into the "
 			"issue details, along with a description of what you were doing at the time of the "
 			"crash.";
@@ -224,7 +233,7 @@ public:
 		btn_send_->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &SLADECrashDialog::onBtnPostReport, this);
 
 		// Add 'Exit SLADE' button
-		btn_exit_ = new wxButton(this, -1, "Exit SLADE");
+		btn_exit_ = new wxButton(this, -1, "Exit TSoSLADaE");
 		hbox->Add(btn_exit_, 0, wxLEFT | wxRIGHT | wxBOTTOM, 4);
 		btn_exit_->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &SLADECrashDialog::onBtnExit, this);
 
@@ -306,7 +315,23 @@ public:
 		wxLaunchDefaultBrowser("https://github.com/sirjuddington/SLADE/issues/new");
 	}
 
-	void onBtnExit(wxCommandEvent& e) { EndModal(wxID_OK); }
+	void onBtnExit(wxCommandEvent& e)
+	{
+		// STAR STUFF //
+		// Remove the Temp Directory
+		std::error_code error;
+		for (auto& item : std::filesystem::directory_iterator{ app::path("", app::Dir::Temp) })
+		{
+			if (!item.is_regular_file())
+				continue;
+
+			if (!std::filesystem::remove(item, error))
+				log::warning("Could not clean up temporary file \"{}\": {}", item.path().string(), error.message());
+		}
+		// NO MORE ANNOYANCES! //
+
+		EndModal(wxID_OK);
+	}
 
 private:
 	wxTextCtrl* text_stack_;
@@ -524,6 +549,13 @@ int SLADEWxApp::OnExit()
 // -----------------------------------------------------------------------------
 void SLADEWxApp::OnFatalException()
 {
+	// STAR STUFF //
+	// Remove That Dang Annoying Single Instance Checker
+	wxSocketBase::Shutdown();
+	delete single_instance_checker_;
+	delete file_listener_;
+	// END THIS MESS //
+
 #if wxUSE_STACKWALKER
 #ifndef _DEBUG
 	SLADEStackTrace st;

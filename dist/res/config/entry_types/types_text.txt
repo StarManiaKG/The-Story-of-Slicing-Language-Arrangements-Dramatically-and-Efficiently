@@ -444,14 +444,14 @@ entry_types
 		match_name = "soc_*", "maincfg", "objctcfg";
 	}
 
-	srb2lua : text
+	srb2blua : text
     	{
-		name = "Lua Script";
+		name = "BLua Script";
 		icon = "lua";
 		match_extorname = 1;
 		match_ext = "lua";
 		match_name = "lua_*";
-		text_language = "srb2lua";
+		text_language = "srb2blua";
    	}
 
 	// ZDaemon text lumps

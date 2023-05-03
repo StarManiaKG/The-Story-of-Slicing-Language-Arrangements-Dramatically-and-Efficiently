@@ -10,7 +10,7 @@
 * mpg123 library
 * OpenGL
 * SFML
-* wxWidgets 3.x
+* wxWidgets 3.x (wxWidgets v3.1.5 preferred)
 * zlib
 
 ### Optional build-time requirements
@@ -23,11 +23,13 @@
 * `-DNO_COTIRE=ON`: disable the use of precompiled headers
 * `-DNO_WEBVIEW=ON`: use if your wxWidgets build has no wxWebview or if not desired
 * `-DWX_GTK3=OFF`: use if your wxWidgets build is using the wxGTK2 backend (there is no autodetection at this point)
-* `-DUSE_SFML_RENDERWINDOW`: Uses SFML to Render SLADE's windows, instead of wxWidgets.
+* `-DUSE_SFML_RENDERWINDOW`: Uses SFML to Render TSoSLADaE's windows, instead of wxWidgets.
+* `-DUSE_SYSTEM_DUMB`: Uses your system's "DUMB" library, instead of TSoSLADae's.
+* `-DUSE_SYSTEM_FMT`: Uses your system's FMT library, instead of TSoSLADae's.
 
 ## Windows
 
-SLADE can be built on Windows using [Visual Studio](https://visualstudio.microsoft.com/) 2019+ (a free 'community' edition is available which works fine) and [vcpkg](https://docs.microsoft.com/en-us/cpp/build/vcpkg?view=vs-2019) for handling the required external libraries.
+TSoSLADaE can be built on Windows using [Visual Studio](https://visualstudio.microsoft.com/) 2019+ (a free 'community' edition is available which works fine) and [vcpkg](https://docs.microsoft.com/en-us/cpp/build/vcpkg?view=vs-2019) for handling the required external libraries.
 
 ### Required vcpkg libraries
 
@@ -38,7 +40,7 @@ SLADE can be built on Windows using [Visual Studio](https://visualstudio.microso
 * sfml
 * wxwidgets
 
-The above libraries are required for building SLADE on windows. Note that you'll most likely want to use the `x64-windows-static` triplet when installing them, eg.
+The above libraries are required for building TSoSLADaE on windows. Note that you'll most likely want to use the `x64-windows-static` triplet when installing them, eg.
 
 ```
 .\vcpkg install <libraries> --triplet x64-windows-static

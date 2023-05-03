@@ -1,4 +1,4 @@
-**SLADE Version**: (3.X.X.x)
+**TSoSLADaE Version**: (3.X.X.x)
 **Operating System**: (Windows/Linux/OSX)
 
 **Issue Details**:

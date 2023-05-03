@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=SLADE
+Name=TSoSLADaE
 Exec=slade 
 Type=Application
 Categories=Development
-Comment=It's a Doom editor
+Comment=It's a Fork of a Doom Editor!
 Icon=net.mancubus.SLADE
 Terminal=false

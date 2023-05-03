@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
 	<id>net.mancubus.SLADE</id>
-	<name>SLADE</name>
-	<summary>It's a Doom editor</summary>
+	<name>TSoSLADaE</name>
+	<summary>It's a Fork of a Doom Editor!</summary>
 	<metadata_license>CC0-1.0</metadata_license>
 	<project_license>GPL-2.0</project_license>
-	<developer_name>Simon Judd</developer_name>
-	<url type="homepage">http://slade.mancubus.net/</url>
-	<url type="bugtracker">https://github.com/sirjuddington/SLADE/issues</url>
+	<developer_name>StarManiaKG</developer_name>
+	<url type="homepage">https://github.com/StarManiaKG/The-Story-of-Slicing-Language-Arrangements-Dramatically-and-Efficiently/</url>
+	<url type="bugtracker">https://github.com/StarManiaKG/The-Story-of-Slicing-Language-Arrangements-Dramatically-and-Efficiently/issues</url>
 	<description>
 		<p>
-			SLADE3 is a modern editor for Doom-engine based games and source ports. It has the ability to view, modify, and write many different game-specific formats, and even convert between some of them, or from/to other generic formats such as PNG.
+			TSoSLADaE is a fork of the popular, modern, doom editior, SLADE!
 		</p>
 		<p>
-			SLADE3 can be considered a successor to both SLumpEd and SLADE - it combines the features of both, to create an all-in-one editor. Why does it keep the name of what was previously just a map editor? Because it fits :)
+			It contains the features of SLADE you know and love (and maybe hate too), with QoL changes directed towards the modders of other communites, like SRB2.
 		</p>
 		<p>
-			As with SLumpEd and previous versions of SLADE, SLADE3 is fully cross-platform. It can be run on various operating systems, including Windows, Linux and Mac OS/X. So no matter your preferred OS, SLADE3 is available for you.
+			Just like vanilla SLADE, TSoSLADaE supports all the platforms you know and love (and maybe also hate too).
 		</p>
 	</description>
 	<screenshots>

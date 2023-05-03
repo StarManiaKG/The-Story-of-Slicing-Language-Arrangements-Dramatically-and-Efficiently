@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>slade</string>
 	<key>CFBundleGetInfoString</key>
-	<string>SLADE</string>
+	<string>TSoSLADaE</string>
 	<key>CFBundleIconFile</key>
 	<string>SLADE-osx.icns</string>
 	<key>CFBundleIdentifier</key>

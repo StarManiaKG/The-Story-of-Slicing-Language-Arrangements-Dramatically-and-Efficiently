@@ -1,6 +1,6 @@
 
-srb2lua {
-	name = "SRB2 Lua Script";
+srb2blua {
+	name = "SRB2 BLua Script";
 	comment_begin = "--[[", "/*";
 	comment_end =  "]]", "*/";
 	comment_line = "--", "//";
@@ -24,41 +24,29 @@ srb2lua {
 		// userdata types
 		valid,
 
-		sprnames,
-		states,
 		mobjinfo,
+		states,
 		S_Sfx, sfxinfo,
+		sprnames,
+		spr2names,
 		players,
-		powers,
 		skins,
 		mapthings,
-		mapheaderinfo,
 		vertexes,
 		lines,
 		sides,
 		subsectors,
 		sectors,
-		sidenum,
+		polyobjects,
+		mapheaderinfo,
 		hudinfo,
-
-		// console variable flags
-		CV_OnOff,
-		CV_YesNo,
-		CV_Unsigned,
-		CV_Natural,
-		CV_SAVE,
-		CV_CALL,
-		CV_NETVAR,
-		CV_NOINIT,
-		CV_FLOAT,
-	 	CV_NOTINNET,
-	 	CV_MODIFIED,
-		CV_SHOWMODIF,
-		CV_SHOWMODIFONETIME,
-	 	CV_NOSHOWHELP,
-		CV_HIDEN,
-		CV_HIDDEN,
-		CV_CHEAT,
+		spriteinfo,
+		spr2defaults,
+		skincolors,
+		gamekeydown,
+		mobjs,
+		powers,
+		sidenum,
 
 		// integer type limits
 		INT8_MIN,
@@ -114,8 +102,11 @@ srb2lua {
 		RING_DIST,
 		PUSHACCEL,
 		MODID,
+		MODVERSION,
 		CODEBASE,
 		VERSION,
+		VERSIONSTRING,
+		SUBVERSION,
 		FLOATSPEED,
 		MAXSTEPMOVE,
 		USERANGE,
@@ -124,14 +115,20 @@ srb2lua {
 		ONFLOORZ,
 		ONCEILINGZ,
 		INFLIVES,
-
 		DASHMODE_THRESHOLD,
 		DASHMODE_MAX,
-
-		FIRSTSUPERCOLOR,
-		NUMSUPERCOLORS,
+		JOYAXISRANGE,
 
 		// translucency levels
+		tr_trans10,
+		tr_trans20,
+		tr_trans30,
+		tr_trans40,
+		tr_trans50,
+		tr_trans60,
+		tr_trans70,
+		tr_trans80,
+		tr_trans90,
 		TR_TRANS10,
 		TR_TRANS20,
 		TR_TRANS30,
@@ -148,6 +145,12 @@ srb2lua {
 		FF_SPR2SUPER,
 		FF_SPR2ENDSTATE,
 		FF_SPR2MIDSTART,
+		FF_BLENDMASK,
+		FF_BLENDSHIFT,
+		FF_ADD,
+		FF_SUBTRACT,
+		FF_REVERSESUBTRACT,
+		FF_MODULATE,
 		FF_TRANSMASK,
 		FF_TRANSSHIFT,
 		FF_TRANS10,
@@ -159,13 +162,178 @@ srb2lua {
 		FF_TRANS70,
 		FF_TRANS80,
 		FF_TRANS90,
+		FF_BRIGHTMASK,
 		FF_FULLBRIGHT,
-		FF_VERTICALFLIP,
+		FF_FULLDARK,
+		FF_SEMIBRIGHT,
 		FF_PAPERSPRITE,
+		FF_FLOORSPRITE,
+		FF_VERTICALFLIP,
+		FF_HORIZONTALFLIP,
 		FF_ANIMATE,
 		FF_RANDOMANIM,
 		FF_GLOBALANIM,
-		FF_HORIZONTALFLIP,
+
+		// render flags
+		RF_HORIZONTALFLIP,
+		RF_VERTICALFLIP,
+		RF_ABSOLUTEOFFSETS,
+		RF_FLIPOFFSETS,
+		RF_SPLATMASK,
+		RF_SLOPESPLAT,
+		RF_OBJECTSLOPESPLAT,
+		RF_NOSPLATBILLBOARD,
+		RF_NOSPLATROLLANGLE,
+		RF_BRIGHTMASK,
+		RF_FULLBRIGHT,
+		RF_FULLDARK,
+		RF_SEMIBRIGHT,
+		RF_NOCOLORMAPS,
+		RF_SPRITETYPEMASK,
+		RF_PAPERSPRITE,
+		RF_FLOORSPRITE,
+		RF_SHADOWDRAW,
+		RF_SHADOWEFFECTS,
+		RF_DROPSHADOW,
+
+		// blend modes
+		AST_COPY,
+		AST_TRANSLUCENT,
+		AST_ADD,
+		AST_SUBTRACT,
+		AST_REVERSESUBTRACT,
+		AST_MODULATE,
+		AST_OVERLAY,
+
+		// sound flags
+		SF_TOTALLYSINGLE,
+		SF_NOMULTIPLESOUND,
+		SF_OUTSIDESOUND,
+		SF_X4AWAYSOUND,
+		SF_X8AWAYSOUND,
+		SF_NOINTERRUPT,
+		SF_X2AWAYSOUND,
+
+		// skincolors
+		SKINCOLOR_NONE,
+		SKINCOLOR_WHITE,
+		SKINCOLOR_BONE,
+		SKINCOLOR_CLOUDY,
+		SKINCOLOR_GREY,
+		SKINCOLOR_SILVER,
+		SKINCOLOR_CARBON,
+		SKINCOLOR_JET,
+		SKINCOLOR_BLACK,
+		SKINCOLOR_AETHER,
+		SKINCOLOR_SLATE,
+		SKINCOLOR_BLUEBELL,
+		SKINCOLOR_PINK,
+		SKINCOLOR_YOGURT,
+		SKINCOLOR_BROWN,
+		SKINCOLOR_BRONZE,
+		SKINCOLOR_TAN,
+		SKINCOLOR_BEIGE,
+		SKINCOLOR_MOSS,
+		SKINCOLOR_AZURE,
+		SKINCOLOR_LAVENDER,
+		SKINCOLOR_RUBY,
+		SKINCOLOR_SALMON,
+		SKINCOLOR_RED,
+		SKINCOLOR_CRIMSON,
+		SKINCOLOR_FLAME,
+		SKINCOLOR_KETCHUP,
+		SKINCOLOR_PEACHY,
+		SKINCOLOR_QUAIL,
+		SKINCOLOR_SUNSET,
+		SKINCOLOR_COPPER,
+		SKINCOLOR_APRICOT,
+		SKINCOLOR_ORANGE,
+		SKINCOLOR_RUST,
+		SKINCOLOR_GOLD,
+		SKINCOLOR_SANDY,
+		SKINCOLOR_YELLOW,
+		SKINCOLOR_OLIVE,
+		SKINCOLOR_LIME,
+		SKINCOLOR_PERIDOT,
+		SKINCOLOR_APPLE,
+		SKINCOLOR_GREEN,
+		SKINCOLOR_FOREST,
+		SKINCOLOR_EMERALD,
+		SKINCOLOR_MINT,
+		SKINCOLOR_SEAFOAM,
+		SKINCOLOR_AQUA,
+		SKINCOLOR_TEAL,
+		SKINCOLOR_WAVE,
+		SKINCOLOR_CYAN,
+		SKINCOLOR_SKY,
+		SKINCOLOR_CERULEAN,
+		SKINCOLOR_ICY,
+		SKINCOLOR_SAPPHIRE,
+		SKINCOLOR_CORNFLOWER,
+		SKINCOLOR_BLUE,
+		SKINCOLOR_COBALT,
+		SKINCOLOR_VAPOR,
+		SKINCOLOR_DUSK,
+		SKINCOLOR_PASTEL,
+		SKINCOLOR_PURPLE,
+		SKINCOLOR_BUBBLEGUM,
+		SKINCOLOR_MAGENTA,
+		SKINCOLOR_NEON,
+		SKINCOLOR_VIOLET,
+		SKINCOLOR_LILAC,
+		SKINCOLOR_PLUM,
+		SKINCOLOR_RASPBERRY,
+		SKINCOLOR_ROSY,
+
+		// super skincolors
+		FIRSTSUPERCOLOR,
+		SKINCOLOR_SUPERSILVER1,
+		SKINCOLOR_SUPERSILVER2,
+		SKINCOLOR_SUPERSILVER3,
+		SKINCOLOR_SUPERSILVER4,
+		SKINCOLOR_SUPERSILVER5,
+		SKINCOLOR_SUPERRED1,
+		SKINCOLOR_SUPERRED2,
+		SKINCOLOR_SUPERRED3,
+		SKINCOLOR_SUPERRED4,
+		SKINCOLOR_SUPERRED5,
+		SKINCOLOR_SUPERORANGE1,
+		SKINCOLOR_SUPERORANGE2,
+		SKINCOLOR_SUPERORANGE3,
+		SKINCOLOR_SUPERORANGE4,
+		SKINCOLOR_SUPERORANGE5,
+		SKINCOLOR_SUPERGOLD1,
+		SKINCOLOR_SUPERGOLD2,
+		SKINCOLOR_SUPERGOLD3,
+		SKINCOLOR_SUPERGOLD4,
+		SKINCOLOR_SUPERGOLD5,
+		SKINCOLOR_SUPERPERIDOT1,
+		SKINCOLOR_SUPERPERIDOT2,
+		SKINCOLOR_SUPERPERIDOT3,
+		SKINCOLOR_SUPERPERIDOT4,
+		SKINCOLOR_SUPERPERIDOT5,
+		SKINCOLOR_SUPERSKY1,
+		SKINCOLOR_SUPERSKY2,
+		SKINCOLOR_SUPERSKY3,
+		SKINCOLOR_SUPERSKY4,
+		SKINCOLOR_SUPERSKY5,
+		SKINCOLOR_SUPERPURPLE1,
+		SKINCOLOR_SUPERPURPLE2,
+		SKINCOLOR_SUPERPURPLE3,
+		SKINCOLOR_SUPERPURPLE4,
+		SKINCOLOR_SUPERPURPLE5,
+		SKINCOLOR_SUPERRUST1,
+		SKINCOLOR_SUPERRUST2,
+		SKINCOLOR_SUPERRUST3,
+		SKINCOLOR_SUPERRUST4,
+		SKINCOLOR_SUPERRUST5,
+		SKINCOLOR_SUPERTAN1,
+		SKINCOLOR_SUPERTAN2,
+		SKINCOLOR_SUPERTAN3,
+		SKINCOLOR_SUPERTAN4,
+		SKINCOLOR_SUPERTAN5,
+		NUMSUPERCOLORS,
+		MAXSKINCOLORS,
 
 		// translation colormaps
 		TC_DEFAULT,
@@ -220,7 +388,10 @@ srb2lua {
 		SF_FASTEDGE,
 		SF_MULTIABILITY,
 		SF_NONIGHTSROTATION,
+		SF_NONIGHTSSUPER,
 		SF_NOSUPERSPRITES,
+		SF_CANBUSTWALLS,
+		SF_NOSHIELDABILITY,
 
 		// Character abilities
 		CA_NONE,
@@ -282,8 +453,8 @@ srb2lua {
 		PF_NOCLIP,
 		PF_INVIS,
 		PF_ATTACKDOWN,
-		PF_USEDOWN,
 		PF_SPINDOWN,
+		PF_USEDOWN,
 		PF_JUMPDOWN,
 		PF_WPNDOWN,
 		PF_STASIS,
@@ -293,8 +464,8 @@ srb2lua {
 		PF_STARTJUMP,
 		PF_JUMPED,
 		PF_NOJUMPDAMAGE,
-		PF_STARTDASH,
 		PF_SPINNING,
+		PF_STARTDASH,
 		PF_THOKKED,
 		PF_SHIELDABILITY,
 		PF_GLIDING,
@@ -358,6 +529,7 @@ srb2lua {
 		CR_MINECART,
 		CR_ROLLOUT,
 		CR_PTERABYTE,
+		CR_DUSTDEVIL,
 
 		// emerald flags
 		EMERALD1,
@@ -373,16 +545,29 @@ srb2lua {
 		BT_WEAPONNEXT,
 		BT_WEAPONPREV,
 		BT_ATTACK,
-		BT_USE,
 		BT_SPIN,
+		BT_USE,
 		BT_CAMLEFT,
 		BT_CAMRIGHT,
 		BT_TOSSFLAG,
 		BT_JUMP,
+		BT_FIRE,
 		BT_FIRENORMAL,
 		BT_CUSTOM1,
 		BT_CUSTOM2,
 		BT_CUSTOM3,
+
+		// mouse button flags
+		MB_BUTTON1,
+		MB_BUTTON2,
+		MB_BUTTON3,
+		MB_BUTTON4,
+		MB_BUTTON5,
+		MB_BUTTON6,
+		MB_BUTTON7,
+		MB_BUTTON8,
+		MB_SCROLLUP,
+		MB_SCROLLDOWN,
 
 		// current weapon
 		WEP_AUTO,
@@ -393,17 +578,184 @@ srb2lua {
 		WEP_RAIL,
 		NUM_WEAPONS,
 
-		// kick reasons
-		KR_KICK,
-		KR_BAN,
-		KR_LEAVE,
-		KR_TIMEOUT,
-		KR_SYNCH,
-		KR_PINGLIMIT,
+		// ring weapon flags
+		RW_AUTO,
+		RP_BOUNCE,
+		RP_SCATTER,
+		RP_GRENADE,
+		RP_EXPLODE,
+		RP_RAIL,
+
+		// P_FlashPal palettes
+		PAL_WHITE,
+		PAL_MIXUP,
+		PAL_RECYCLE,
+		PAL_NUKE,
+
+		// gotflag flags
+		GF_REDFLAG,
+		GF_BLUEFLAG,
+
+		// TypeOfLevel flags
+		TOL_SP,
+		TOL_COOP,
+		TOL_COMPETITION,
+		TOL_RACE,
+		TOL_MATCH,
+		TOL_TAG,
+		TOL_CTF,
+		TOL_CUSTOM,
+		TOL_2D,
+		TOL_MARIO,
+		TOL_NIGHTS,
+		TOL_ERZ3,
+		TOL_XMAS,
+
+		// gametypes
+		GT_COOP,
+		GT_COMPETITION,
+		GT_RACE,
+		GT_MATCH,
+		GT_TEAMMATCH,
+		GT_TAG,
+		GT_HIDEANDSEEK,
+		GT_CTF,
+
+		// marathon mode flags
+		MA_RUNNING,
+		MA_INIT,
+		MA_NOCUTSCENES,
+		MA_INGAME,
+
+		// weather types
+		PRECIP_NONE,
+		PRECIP_STORM,
+		PRECIP_SNOW,
+		PRECIP_RAIN,
+		PRECIP_BLANK,
+		PRECIP_STORM_NORAIN,
+		PRECIP_STORM_NOSTRIKES,
+
+		// level flags
+		LF_SCRIPTISFILE,
+		LF_SPEEDMUSIC,
+		LF_NOSSMUSIC,
+		LF_NORELOAD,
+		LF_NOZONE,
+		LF_SAVEGAME,
+		LF_MIXNIGHTSCOUNTDOWN,
+		LF_WARNINGTITLE,
+		LF_NOTITLECARD,
+
+		// menu flags
+		LF2_HIDEINMENU,
+		LF2_HIDEINSTATS,
+		LF2_RECORDATTACK,
+		LF2_NIGHTSATTACK,
+		LF2_NOVISITNEEDED,
+		LF2_WIDEICON,
+
+		// nights grades
+		GRADE_F,
+		GRADE_E,
+		GRADE_D,
+		GRADE_C,
+		GRADE_B,
+		GRADE_A,
+		GRADE_S,
+
+		// Linedef flags
+		ML_IMPASSIBLE,
+		ML_BLOCKMONSTERS,
+		ML_TWOSIDED,
+		ML_DONTPEGTOP,
+		ML_DONTPEGBOTTOM,
+		ML_EFFECT1,
+		ML_NOCLIMB,
+		ML_EFFECT2,
+		ML_EFFECT3,
+		ML_EFFECT4,
+		ML_EFFECT5,
+		ML_NETONLY,
+		ML_NONET,
+		ML_EFFECT6,
+		ML_BOUNCY,
+		ML_TFERLINE,
+
+		// reserved lindef tags
+		LE_AXE,
+		LE_KOOPA,
+		LE_CAPSULE0,
+		LE_CAPSULE1,
+		LE_CAPSULE2,
+		LE_BRAKPLATFORM,
+		LE_TURRET,
+		LE_BRAKVILEATACK,
+		LE_BOSS4DROP,
+		LE_BOSSDEAD,
+		LE_ALLBOSSESDEAD,
+		LE_PINCHPHASE,
+		LE_PARAMWIDTH,
+
+		// fof flags
+		FF_EXISTS,
+		FF_BLOCKPLAYER,
+		FF_BLOCKOTHERS,
+		FF_SOLID,
+		FF_RENDERSIDES,
+		FF_RENDERPLANES,
+		FF_RENDERALL,
+		FF_SWIMMABLE,
+		FF_NOSHADE,
+		FF_CUTSOLIDS,
+		FF_CUTEXTRA,
+		FF_CUTLEVEL,
+		FF_CUTSPRITES,
+		FF_BOTHPLANES,
+		FF_EXTRA,
+		FF_TRANSLUCENT,
+		FF_FOG,
+		FF_INVERTSIDES,
+		FF_DOUBLESHADOW,
+		FF_FLOATBOB,
+		FF_NORETURN,
+		FF_CRUMBLE,
+		FF_SHATTERBOTTOM,
+		FF_GOOWATER,
+		FF_MARIO,
+		FF_BUSTUP,
+		FF_QUICKSAND,
+		FF_PLATFORM,
+		FF_REVERSEPLATFORM,
+		FF_INTANGIBLEFLATS,
+		FF_SHATTER,
+		FF_SPINBUST,
+		FF_STRONGBUST,
+		FF_RIPPLE,
+		FF_COLORMAPONLY,
 
 		// slope flags
 		SL_NOPHYSICS,
 		SL_DYNAMIC,
+
+		// polyobject flags
+		POF_CLIPLINES,
+		POF_CLIPPLANES,
+		POF_SOLID,
+		POF_TESTHEIGHT,
+		POF_RENDERSIDES,
+		POF_RENDERTOP,
+		POF_RENDERBOTTOM,
+		POF_RENDERPLANES,
+		POF_RENDERALL,
+		POF_INVERT,
+		POF_INVERTPLANES,
+		POF_INVERTPLANESONLY,
+		POF_PUSHABLESTOP,
+		POF_LDEXEC,
+		POF_ONESIDE,
+		POF_NOSPECIALS,
+		POF_SPLAT,
 
 		// emblem flags
 		GE_NIGHTSPULL,
@@ -425,6 +777,169 @@ srb2lua {
 		JT_GOVER,
 		JT_NIGHTSTIMEOUT,
 		JT_SSTIMEOUT,
+
+		// console variable flags
+		CV_OnOff,
+		CV_YesNo,
+		CV_Unsigned,
+		CV_Natural,
+		CV_SAVE,
+		CV_CALL,
+		CV_NETVAR,
+		CV_NOINIT,
+		CV_FLOAT,
+	 	CV_NOTINNET,
+	 	CV_MODIFIED,
+		CV_SHOWMODIF,
+		CV_SHOWMODIFONETIME,
+	 	CV_NOSHOWHELP,
+		CV_HIDEN,
+		CV_HIDDEN,
+		CV_CHEAT,
+
+		// command flags
+		COM_ADMIN,
+		COM_SPLITSCREEN,
+		COM_LOCAL,
+
+		// video flags
+		V_PARAMMASK,
+		V_SCALEPATCHMASK,
+		V_SPACINGMASK,
+		V_CHARCOLORMASK,
+		V_ALPHAMASK,
+		V_NOSCALEPATCH,
+		V_SMALLSCALEPATCH,
+		V_MEDSCALEPATCH,
+		V_6WIDTHSPACE,
+		V_OLDSPACING,
+		V_MONOSPACE,
+		V_MAGENTAMAP,
+		V_YELLOWMAP,
+		V_GREENMAP,
+		V_BLUEMAP,
+		V_REDMAP,
+		V_GRAYMAP,
+		V_ORANGEMAP,
+		V_SKYMAP,
+		V_PURPLEMAP,
+		V_AQUAMAP,
+		V_PERIDOTMAP,
+		V_AZUREMAP,
+		V_BROWNMAP,
+		V_ROSYMAP,
+		V_INVERTMAP,
+		V_10TRANS,
+		V_20TRANS,
+		V_30TRANS,
+		V_40TRANS,
+		V_50TRANS,
+		V_60TRANS,
+		V_70TRANS,
+		V_80TRANS,
+		V_90TRANS,
+		V_HUDTRANSHALF,
+		V_HUDTRANS,
+		V_HUDTRANSDOUBLE,
+		V_ADD,
+		V_SUBTRACT,
+		V_REVERSESUBTRACT,
+		V_MODULATE,
+		V_ALLOWLOWERCASE,
+		V_FLIP,
+		V_CENTERNAMETAG,
+		V_SNAPTOTOP,
+		V_SNAPTOBOTTOM,
+		V_SNAPTOLEFT,
+		V_SNAPTORIGHT,
+		V_AUTOFADEOUT,
+		V_RETURN8,
+		V_NOSCALESTART,
+		V_PERPLAYER,
+		V_CHARCOLORSHIFT,
+		V_ALPHASHIFT,
+		V_BLENDSHIFT,
+
+		// kick reasons
+		KR_KICK,
+		KR_PINGLIMIT,
+		KR_SYNCH,
+		KR_TIMEOUT,
+		KR_BAN,
+		KR_LEAVE,
+
+		// game states
+		GS_NULL,
+		GS_LEVEL,
+		GS_INTERMISSION,
+		GS_CONTINUING,
+		GS_TITLESCREEN,
+		GS_TIMEATTACK,
+		GS_CREDITS,
+		GS_EVALUATION,
+		GS_GAMEEND,
+		GS_INTRO,
+		GS_ENDING,
+		GS_CUTSCENE,
+		GS_DEDICATEDSERVER,
+		GS_WAITINGPLAYERS,
+
+		// game controls
+		GC_NULL,
+		GC_FORWARD,
+		GC_BACKWARD,
+		GC_STRAFELEFT,
+		GC_STRAFERIGHT,
+		GC_TURNLEFT,
+		GC_TURNRIGHT,
+		GC_WEAPONNEXT,
+		GC_WEAPONPREV,
+		GC_WEPSLOT1,
+		GC_WEPSLOT2,
+		GC_WEPSLOT3,
+		GC_WEPSLOT4,
+		GC_WEPSLOT5,
+		GC_WEPSLOT6,
+		GC_WEPSLOT7,
+		GC_WEPSLOT8,
+		GC_WEPSLOT9,
+		GC_WEPSLOT10,
+		GC_FIRE,
+		GC_FIRENORMAL,
+		GC_TOSSFLAG,
+		GC_SPIN,
+		GC_CAMTOGGLE,
+		GC_CAMRESET,
+		GC_LOOKUP,
+		GC_LOOKDOWN,
+		GC_CENTERVIEW,
+		GC_MOUSEAIMING,
+		GC_TALKKEY,
+		GC_TEAMKEY,
+		GC_SCORES,
+		GC_JUMP,
+		GC_CONSOLE,
+		GC_PAUSE,
+		GC_SYSTEMMENU,
+		GC_SCREENSHOT,
+		GC_RECORDGIF,
+		GC_VIEWPOINT,
+		GC_CUSTOM1,
+		GC_CUSTOM2,
+		GC_CUSTOM3,
+		NUM_GAMECONTROLS,
+
+		// joystick axes
+		JA_NONE,
+		JA_TURN,
+		JA_MOVE,
+		JA_LOOK,
+		JA_STRAFE,
+		JA_DIGITAL,
+		JA_JUMP,
+		JA_SPIN,
+		JA_FIRE,
+		JA_FIRENORMAL,
 
 		// player powers
 		pw_invulnerability,
@@ -490,45 +1005,6 @@ srb2lua {
 		GTR_ALLOWEXIT,
 		GTR_NOTITLECARD,
 		GTR_CUTSCENES,
-
-		// P_FlashPal palettes
-		PAL_WHITE,
-		PAL_MIXUP,
-		PAL_RECYCLE,
-		PAL_NUKE,
-
-		// TypeOfLevel flags
-		TOL_SP,
-		TOL_COOP,
-		TOL_COMPETITION,
-		TOL_RACE,
-		TOL_MATCH,
-		TOL_TAG,
-		TOL_CTF,
-		TOL_CUSTOM,
-		TOL_2D,
-		TOL_MARIO,
-		TOL_NIGHTS,
-		TOL_ERZ3,
-		TOL_XMAS,
-
-		// Linedef flags
-		ML_IMPASSIBLE,
-		ML_BLOCKMONSTERS,
-		ML_TWOSIDED,
-		ML_DONTPEGTOP,
-		ML_DONTPEGBOTTOM,
-		ML_EFFECT1,
-		ML_NOCLIMB,
-		ML_EFFECT2,
-		ML_EFFECT3,
-		ML_EFFECT4,
-		ML_EFFECT5,
-		ML_NETONLY,
-		ML_NONET,
-		ML_EFFECT6,
-		ML_BOUNCY,
-		ML_TFERLINE,
 	}
 
 	functions {
@@ -541,6 +1017,9 @@ srb2lua {
 		IsPlayerAdmin = "player_t player";
 		userdataType = "* v";
 		reserveLuabanks;
+		registerMetatable = "table{} metatable";
+		userdataMetatable = "string userdataname";
+		getTimeMicros;
 
 		// math
 		abs = "int a";
@@ -568,6 +1047,30 @@ srb2lua {
 		All7Emeralds = "int flags";
 		ColorOpposite = "int color";
 
+		// easing
+		ease.linear = "fixed t, [fixed start], [fixed end]";
+		ease.insine = "fixed t, [fixed start], [fixed end]";
+		ease.outsine = "fixed t, [fixed start], [fixed end]";
+		ease.inoutsine = "fixed t, [fixed start], [fixed end]";
+		ease.inquad = "fixed t, [fixed start], [fixed end]";
+		ease.outquad = "fixed t, [fixed start], [fixed end]";
+		ease.inoutquad = "fixed t, [fixed start], [fixed end]";
+		ease.incubic = "fixed t, [fixed start], [fixed end]";
+		ease.outcubic = "fixed t, [fixed start], [fixed end]";
+		ease.inoutcubic = "fixed t, [fixed start], [fixed end]";
+		ease.inquart = "fixed t, [fixed start], [fixed end]";
+		ease.outquart = "fixed t, [fixed start], [fixed end]";
+		ease.inoutquart = "fixed t, [fixed start], [fixed end]";
+		ease.inquint = "fixed t, [fixed start], [fixed end]";
+		ease.outquint = "fixed t, [fixed start], [fixed end]";
+		ease.inoutquint = "fixed t, [fixed start], [fixed end]";
+		ease.inexpo = "fixed t, [fixed start], [fixed end]";
+		ease.outexpo = "fixed t, [fixed start], [fixed end]";
+		ease.inoutexpo = "fixed t, [fixed start], [fixed end]";
+		ease.inback = "fixed t, [fixed start], [fixed end], [fixed param]";
+		ease.outback = "fixed t, [fixed start], [fixed end], [fixed param]";
+		ease.inoutback = "fixed t, [fixed start], [fixed end], [fixed param]";
+
 		// p_random
 		P_Random;
 		P_RandomFixed;
@@ -576,6 +1079,15 @@ srb2lua {
 		P_RandomChance = "fixed p";
 		P_RandomKey = "int a";
 		P_RandomRange = "int a, int b";
+
+		// m_menu
+		M_MoveColorAfter = "int color, int target";
+		M_MoveColorBefore = "int color, int target";
+		M_GetColorAfter = "int color";
+		M_GetColorBefore = "int color";
+
+		// m_map
+		M_MapNumber = "string name";
 
 		// p_maputil
 		P_AproxDistance = "fixed dx, fixed dy";
@@ -616,6 +1128,12 @@ srb2lua {
 		P_InsideANonSolidFFloor = "mobj_t mobj, ffloor_t rover";
 		P_CheckSolidLava = "mobj_t mobj, ffloor_t rover";
 		P_CanRunOnWater = "player_t player, ffloor_t rover";
+		P_MaceRotate = "mobj_t center, int baserot, int baseprevrot";
+		P_CreateFloorSpriteSlope = "mobj_t mobj";
+		P_RemoveFloorSpriteSlope = "mobj_t mobj";
+
+		// p_polyobj
+		polyobjects.GetForNum = "polyobj_t polyobject, int id";
 
 		// p_slopes
 		P_GetZAt = "pslope_t slope, fixed x, fixed y";
@@ -662,6 +1180,10 @@ srb2lua {
 		P_IsObjectInGoop = "mobj_t mobj";
 		P_SpawnSkidDust = "player_t player, fixed_t radius, [int sound]";
 		P_Earthquake = "mobj_t inflictor, mobj_t source, fixed_t radius";
+		P_PlayerFullbright = "player_t player";
+		P_MovePlayer = "player_t player";
+		P_PlayerCanEnterSpinGaps = "player_t player";
+		P_PlayerShouldUseSpinHeight = "player_t player";
 
 		// r_data
 		R_TextureNumForName = "string name";
@@ -681,6 +1203,8 @@ srb2lua {
 		P_RadiusAttack = "mobj_t inflictor, mobj_t source, fixed radius, [int damagetype], [boolean sightcheck]";
 		P_FloorzAtPos = "fixed x, fixed y, fixed z, fixed height";
 		P_DoSpring = "mobj_t spring, mobj_t object";
+		P_TryCameraMove = "camera_t camera, fixed x, fixed y";
+		P_TeleportCameraMove = "camera_t camera, fixed x, fixed y";
 
 		// p_inter
 		P_RemoveShield = "player_t player";
@@ -705,6 +1229,12 @@ srb2lua {
 		P_DoSuperTransformation = "player_t player, [boolean giverings?]";
 		P_ExplodeMissile = "mobj_t missile";
 		P_PlayerTouchingSectorSpecial = "player_t player, int section, int specialnum";
+		P_FindLowestFloorSurrounding = "sector_t sector";
+		P_FindHighestFloorSurrounding = "sector_t sector";
+		P_FindLowestCeilingSurrounding = "sector_t sector";
+		P_FindHighestCeilingSurrounding = "sector_t sector";
+		P_FindNextHighestFloor = "sector_t sector, [fixed currentheight]";
+		P_FindNextLowestFloor = "sector_t sector, [fixed currentheight]";
 		P_FindSpecialLineFromTag = "int special, int tag, [int start]";
 		P_SwitchWeather = "int weather, [player_t player]";
 		P_LinedefExecute = "int tag, [mobj_t actor], [sector_t caller]";
@@ -753,6 +1283,15 @@ srb2lua {
 		S_GetMusicLength;
 		S_GetMusicPosition;
 		S_SetMusicPosition = "int position";
+		S_MusicType;
+		S_MusicExists = "string mname, [boolean checkmidi], [boolean checkdigi]";
+		S_MusicPlaying = "[player_t player]";
+		S_MusicPaused = "[player_t player]";
+		S_MusicName = "[player_t player]";
+		S_SetMusicLoopPoint = "int looppoint, [player_t player]";
+		S_GetMusicLoopPoint = "[player_t player]";
+		S_PauseMusic = "[player_t player]";
+		S_ResumeMusic = "[player_t player]";
 
 		// g_game
 		G_BuildMapName = "int map";
@@ -763,11 +1302,17 @@ srb2lua {
 		G_IsSpecialStage = "int map";
 		G_AddGametype = "table t";
 		G_GametypeUsesLives;
+		G_GametypeUsesCoopLives;
+		G_GametypeUsesCoopStarposts;
 		G_GametypeHasTeams;
 		G_GametypeHasSpectators;
 		G_RingSlingerGametype;
 		G_PlatformGametype;
+		G_CoopGametype;
 		G_TagGametype;
+		G_CompetitionGametype;
+		G_AddPlayer = "int skin, int color, string name, int bottype";
+		G_RemovePlayer = "int playernum";
 		G_TicsToHours = "int tics";
 		G_TicsToMinutes = "int tics, [boolean full?]";
 		G_TicsToSeconds = "int tics";
@@ -785,15 +1330,39 @@ srb2lua {
 		// blockmap search
 		searchBlockmap = "string searchtype, function fn, mobj_t refmobj, [fixed x1], [fixed x2], [fixed y1], [fixed y2]";
 
+		// input library
+		gameControlDown = "int gc";
+		gameControl2Down = "int gc";
+		gameControlToKeyNum = "int gc";
+		gameControl2ToKeyNum = "int gc";
+		joyAxis = "int axissel";
+		joy2Axis = "int axissel";
+		keyNumToName = "int keynum";
+		keyNameToNum = "string keyname";
+		keyNumPrintable = "string keynum";
+		shiftKeyNum = "string keynum";
+		getMouseGrab;
+		setMouseGrab = "boolean grab";
+		getCursorPosition;
+
 		// iterators
 		players.iterate;
 		mobjs.iterate;
 		skins.iterate;
+		sector.thinglist;
+		sector.ffloors;
 		sectors.iterate;
+		sectors.tagged;
+		subsector.polyList;
 		subsectors.iterate;
 		lines.iterate;
 		sides.iterate;
 		vertexes.iterate;
+		polyobjects.iterate;
+		taglist.iterate;
+		taglist:iterate;
+		file.lines;
+		file:lines;
 
 		hud.enable = "string huditem";
 		hud.disable = "string huditem";
@@ -804,20 +1373,30 @@ srb2lua {
 		draw = "int x, int y, patch patch, [int flags], [colormap c]";
 		drawScaled = "fixed x, fixed y, fixed scale, patch patch, [int flags], [colormap c]";
 		drawStreched = "fixed x, fixed y, fixed hscale, fixed vscale, patch_t patch, [int flags], [colormap c]";
+		drawCropped = "fixed x, fixed y, fixed hscale, fixed vscale, patch_t patch, [int flags], [colormap c], fixed sx, fixed sy, fixed w, fixed h";
 		drawNum = "int x, int y, int num, [int flags]";
 		drawPaddedNum = "int x, int y, int num, [int digits], [int flags]";
 		drawFill = "[int x], [int y], [int w], [int h], [int color]";
 		drawString = "fixed x, fixed y, string str, [int flags], [string alignment]";
 		drawNameTag = "int x, int y, string text, [int flags], [int basecolor], [int outlinecolor]";
 		drawScaledNameTag = "int x, int y, string text, [int flags], [int scale], [int basecolor], [int outlinecolor]";
+		drawLevelTitle = "int x, int y, string text, [int flags]";
 		patchExists = "string name";
 		cachePatch = "string name";
 		getColormap = "[string/int skin], [int color]";
+		getStringColormap = "int textcolor";
 		fadeScreen = "int color, int strength";
 		getSpritePatch = "int sprite, [int frame], [int angle]";
 		getSprite2Patch = "string/int skin, string/int sprite2, [boolean super?], [int frame], [int rotation], [angle rollangle]";
 		stringWidth = "string string, [int flags], [string widthtype]";
+		width;
+		height;
+		dupx;
+		dupy;
+		renderer;
 		nameTagWidth = "string text";
+		levelTitleWidth = "string text";
+		levelTitleHeight = "string text";
 		localTransFlag;
 		userTransFlag;
 		RandomFixed;
@@ -851,7 +1430,7 @@ srb2lua {
 		unpack = "table{} list, [int start], [int end]";
 		xpcall = "function(?) call, function(boolean status) errortrap";
 		io.open = "string filename, [string mode], function callback";
-		io.openlocal = "string filename, [string mode], function callback";
+		io.openlocal = "string filename, [string mode]";
 		io.close = "file file";
 		io.tmpfile;
 		io.type = "* obj";
@@ -884,5 +1463,27 @@ srb2lua {
 		table.insert = "table{}, * element";
 		table.remove = "table{}, * key";
 		table.sort = "table{}, [function(* element_a/* element_b) comp]";
+
+		// polyobject lua
+		pointInside = "fixed x, fixed y";
+		mobjTouching = "mobj_t mobj";
+		mobjInside = "mobj_t mobj";
+		moveXY = "fixed x, fixed y, [boolean checkmobjs]";
+		rotate = "angle delta, [int turnthings], [boolean checkmobjs]";
+
+		// taglist lua
+		has = "int tag";
+		find = "int tag";
+		shares = "taglist_t othertaglist";
+		add = "int tag";
+		remove = "int tag";
+
+		// extra basic lua
+		close;
+		flush;
+		read = "[* format]";
+		seek = "[string whence], [int offset]";
+		setvbuf = "string mode, [int size]";
+		write = "[...]";
 	}
 }
