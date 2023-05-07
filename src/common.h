@@ -145,7 +145,8 @@
 #include <optional>
 #include <unordered_map>
 
-// Misc.
-#define SRB2_FRIENDLY // dds better support for the fellow srb2 users out there
+// STAR STUFF //
+#define SRB2_FRIENDLY // better support for the fellow srb2 users out there
+// END THAT lol //
 
 #endif // COMMON_H

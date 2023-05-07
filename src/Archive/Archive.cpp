@@ -1735,11 +1735,15 @@ bool Archive::loadFormats(MemChunk& mc)
 	fmt_folder.name                  = "Folder";
 	fmt_folder.names_extensions      = true;
 	fmt_folder.supports_dirs         = true;
+
+	// STAR STUFF //
 #ifndef SRB2_FRIENDLY
 	fmt_folder.allow_duplicate_names = false;
 #else
 	fmt_folder.allow_duplicate_names = true;
 #endif
+	// BEP //
+	
 	formats_.push_back(fmt_folder);
 
 	return true;

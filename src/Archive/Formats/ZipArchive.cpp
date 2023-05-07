@@ -53,12 +53,14 @@ using namespace slade;
 // Variables
 //
 // -----------------------------------------------------------------------------
+
+// STAR STUFF //
 #ifdef SRB2_FRIENDLY
 CVAR(Bool, zip_allow_duplicate_names, false, CVar::Save)
 #else
 CVAR(Bool, zip_allow_duplicate_names, true, CVar::Save)
 #endif
-
+// BEP BEP //
 
 // -----------------------------------------------------------------------------
 //
@@ -266,7 +268,8 @@ bool ZipArchive::write(string_view filename, bool update)
 	// Check for entries with duplicate names (not allowed for zips)
 	auto all_dirs = rootDir()->allDirectories();
 	all_dirs.insert(all_dirs.begin(), rootDir());
-	
+
+	// STAR NOTE: i was here lol
 #ifndef SRB2_FRIENDLY
 	for (const auto& dir : all_dirs)
 	{

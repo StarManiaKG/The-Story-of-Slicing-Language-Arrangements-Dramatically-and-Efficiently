@@ -54,10 +54,6 @@
 #include "gitinfo.h"
 #endif
 
-// STAR STUFF //
-#include <filesystem>
-// TIME TO MESS UP SLADE TOO //
-
 using namespace slade;
 
 
@@ -315,23 +311,7 @@ public:
 		wxLaunchDefaultBrowser("https://github.com/sirjuddington/SLADE/issues/new");
 	}
 
-	void onBtnExit(wxCommandEvent& e)
-	{
-		// STAR STUFF //
-		// Remove the Temp Directory
-		std::error_code error;
-		for (auto& item : std::filesystem::directory_iterator{ app::path("", app::Dir::Temp) })
-		{
-			if (!item.is_regular_file())
-				continue;
-
-			if (!std::filesystem::remove(item, error))
-				log::warning("Could not clean up temporary file \"{}\": {}", item.path().string(), error.message());
-		}
-		// NO MORE ANNOYANCES! //
-
-		EndModal(wxID_OK);
-	}
+	void onBtnExit(wxCommandEvent& e) { EndModal(wxID_OK); }
 
 private:
 	wxTextCtrl* text_stack_;
